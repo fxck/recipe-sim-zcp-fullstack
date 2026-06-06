@@ -1,0 +1,40 @@
+#zeropsPreprocessor=on
+
+# AI Agent environment — a workspace where a coding agent (Claude Code, opencode,
+# ...) can build and verify the app. A live dev service the agent edits over SSH,
+# a staging slot that validates the production build, and a low-resource database.
+project:
+  name: tasklight-agent
+  envVariables:
+    # AES key for SvelteKit session/cookie encryption. Project-level so dev and
+    # stage containers agree. Machine-generated — never prompts.
+    APP_KEY: <@generateRandomString(<32>)>
+
+services:
+  # Agent workspace — zeropsSetup:dev deploys the full source tree so the agent
+  # can SSH in, edit, and see results without a rebuild. Subdomain gives it a URL
+  # to check its work against.
+  - hostname: appdev
+    type: nodejs@22
+    zeropsSetup: dev
+    buildFromGit: https://github.com/fxck/recipe-zcp-fullstack
+    enableSubdomainAccess: true
+    verticalAutoscaling:
+      minRam: 0.5
+
+  # Staging slot — zeropsSetup:prod runs the real production pipeline (build +
+  # adapter output) so the agent can confirm a deploy works before finishing.
+  - hostname: appstage
+    type: nodejs@22
+    zeropsSetup: prod
+    buildFromGit: https://github.com/fxck/recipe-zcp-fullstack
+    enableSubdomainAccess: true
+    verticalAutoscaling:
+      minRam: 0.5
+
+  - hostname: db
+    type: postgresql@18
+    priority: 10
+    mode: NON_HA
+    verticalAutoscaling:
+      minRam: 0.25

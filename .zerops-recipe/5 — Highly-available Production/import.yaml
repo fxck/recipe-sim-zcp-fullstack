@@ -1,0 +1,37 @@
+#zeropsPreprocessor=on
+
+# Highly-available Production — no single point of failure. The app scales
+# horizontally; the database and cache run in HA (multi-node) mode and replicate
+# across the cluster.
+project:
+  name: tasklight-ha-prod
+  corePackage: SERIOUS
+  envVariables:
+    APP_KEY: <@generateRandomString(<32>)>
+
+services:
+  - hostname: app
+    type: nodejs@22
+    zeropsSetup: prod
+    buildFromGit: https://github.com/fxck/recipe-zcp-fullstack
+    enableSubdomainAccess: true
+    minContainers: 2
+    maxContainers: 6
+    verticalAutoscaling:
+      minRam: 1
+      minFreeRamGB: 0.5
+
+  # HA Postgres — replicated across multiple nodes for durability + failover.
+  - hostname: db
+    type: postgresql@18
+    priority: 10
+    mode: HA
+    verticalAutoscaling:
+      minRam: 1
+      minFreeRamGB: 0.5
+
+  # HA Valkey — sessions and rate limiting survive a node failure.
+  - hostname: cache
+    type: valkey@7.2
+    priority: 10
+    mode: HA

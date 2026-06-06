@@ -1,0 +1,25 @@
+#zeropsPreprocessor=on
+
+# Local environment — run the app on your machine, but back it with a real
+# Zerops database over the zcli VPN. Minimal footprint: just the app (in dev
+# mode) and a single-node database you connect to locally.
+project:
+  name: tasklight-local
+  envVariables:
+    APP_KEY: <@generateRandomString(<32>)>
+
+services:
+  - hostname: app
+    type: nodejs@22
+    zeropsSetup: dev
+    buildFromGit: https://github.com/fxck/recipe-zcp-fullstack
+    enableSubdomainAccess: true
+    verticalAutoscaling:
+      minRam: 0.25
+
+  - hostname: db
+    type: postgresql@18
+    priority: 10
+    mode: NON_HA
+    verticalAutoscaling:
+      minRam: 0.25

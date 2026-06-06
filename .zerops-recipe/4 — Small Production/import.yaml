@@ -1,0 +1,33 @@
+#zeropsPreprocessor=on
+
+# Small Production — production-ready for moderate traffic. Two always-on app
+# containers, a single-node database, and Valkey for sessions and rate limiting.
+project:
+  name: tasklight-small-prod
+  envVariables:
+    APP_KEY: <@generateRandomString(<32>)>
+
+services:
+  - hostname: app
+    type: nodejs@22
+    zeropsSetup: prod
+    buildFromGit: https://github.com/fxck/recipe-zcp-fullstack
+    enableSubdomainAccess: true
+    minContainers: 2
+    verticalAutoscaling:
+      minRam: 0.5
+      minFreeRamGB: 0.25
+
+  - hostname: db
+    type: postgresql@18
+    priority: 10
+    mode: NON_HA
+    verticalAutoscaling:
+      minRam: 0.5
+      minFreeRamGB: 0.25
+
+  # Sessions + rate-limit counters, so app containers stay stateless.
+  - hostname: cache
+    type: valkey@7.2
+    priority: 10
+    mode: NON_HA

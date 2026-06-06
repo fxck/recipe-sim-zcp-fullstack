@@ -1,0 +1,37 @@
+#zeropsPreprocessor=on
+
+# Remote (CDE) environment — build the app inside Zerops over SSH, no local
+# toolchain required. A dev service you edit live, a staging slot mirroring
+# production, and a disposable database.
+project:
+  name: tasklight-remote
+  envVariables:
+    APP_KEY: <@generateRandomString(<32>)>
+
+services:
+  # Remote development workspace — SSH or IDE-over-SSHFS into the container and
+  # edit source live; Vite HMR serves changes without a redeploy.
+  - hostname: appdev
+    type: nodejs@22
+    zeropsSetup: dev
+    buildFromGit: https://github.com/fxck/recipe-zcp-fullstack
+    enableSubdomainAccess: true
+    verticalAutoscaling:
+      minRam: 0.5
+
+  # Staging for remote devs — mirrors the production build so you can validate
+  # deploys before merging to main.
+  - hostname: appstage
+    type: nodejs@22
+    zeropsSetup: prod
+    buildFromGit: https://github.com/fxck/recipe-zcp-fullstack
+    enableSubdomainAccess: true
+    verticalAutoscaling:
+      minRam: 0.5
+
+  - hostname: db
+    type: postgresql@18
+    priority: 10
+    mode: NON_HA
+    verticalAutoscaling:
+      minRam: 0.25
