@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="320" viewBox="0 0 760 320" font-family="-apple-system, Segoe UI, Roboto, sans-serif">
+  <rect x="0" y="0" width="760" height="320" rx="16" fill="#f7f8fa" stroke="#e2e6ea"/>
+  <!-- browser -->
+  <rect x="40" y="130" width="130" height="60" rx="10" fill="#ffffff" stroke="#cfd5db"/>
+  <text x="105" y="158" text-anchor="middle" font-size="14" font-weight="600" fill="#2a2f36">Browser</text>
+  <text x="105" y="176" text-anchor="middle" font-size="11" fill="#737b85">HTTPS</text>
+  <!-- L7 balancer -->
+  <rect x="220" y="135" width="90" height="50" rx="10" fill="#eef6ff" stroke="#9ecbf3"/>
+  <text x="265" y="160" text-anchor="middle" font-size="12" font-weight="600" fill="#0a63a8">L7</text>
+  <text x="265" y="175" text-anchor="middle" font-size="10" fill="#3f7cae">balancer</text>
+  <!-- app containers -->
+  <rect x="360" y="70" width="150" height="60" rx="10" fill="#ffffff" stroke="#cfd5db"/>
+  <text x="435" y="96" text-anchor="middle" font-size="13" font-weight="600" fill="#2a2f36">app · SvelteKit</text>
+  <text x="435" y="114" text-anchor="middle" font-size="10" fill="#737b85">node · 2–6 containers</text>
+  <rect x="372" y="82" width="150" height="60" rx="10" fill="#ffffff" stroke="#cfd5db" opacity="0.55"/>
+  <!-- postgres -->
+  <rect x="585" y="55" width="135" height="55" rx="10" fill="#ffffff" stroke="#cfd5db"/>
+  <text x="652" y="80" text-anchor="middle" font-size="13" font-weight="600" fill="#2a2f36">db · PostgreSQL</text>
+  <text x="652" y="97" text-anchor="middle" font-size="10" fill="#737b85">HA in production</text>
+  <!-- valkey -->
+  <rect x="585" y="150" width="135" height="55" rx="10" fill="#ffffff" stroke="#cfd5db"/>
+  <text x="652" y="175" text-anchor="middle" font-size="13" font-weight="600" fill="#2a2f36">cache · Valkey</text>
+  <text x="652" y="192" text-anchor="middle" font-size="10" fill="#737b85">sessions · rate limit</text>
+  <!-- arrows -->
+  <g stroke="#9aa2ab" stroke-width="1.6" fill="none" marker-end="url(#a)">
+    <path d="M170 160 H214"/>
+    <path d="M310 158 C335 150 340 110 354 102"/>
+    <path d="M510 95 C545 90 552 85 579 82"/>
+    <path d="M510 120 C548 140 552 160 579 172"/>
+  </g>
+  <defs>
+    <marker id="a" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0 0 L7 3 L0 6 z" fill="#9aa2ab"/></marker>
+  </defs>
+  <text x="380" y="250" text-anchor="middle" font-size="11" fill="#737b85">Stateless app containers scale horizontally; state lives in Postgres + Valkey.</text>
+</svg>
