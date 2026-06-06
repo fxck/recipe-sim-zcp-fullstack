@@ -12,7 +12,7 @@ services:
   - hostname: app
     type: nodejs@22
     zeropsSetup: dev
-    buildFromGit: https://github.com/fxck/recipe-zcp-fullstack
+    buildFromGit: https://github.com/fxck/recipe-sim-zcp-fullstack
     enableSubdomainAccess: true
     verticalAutoscaling:
       minRam: 0.25

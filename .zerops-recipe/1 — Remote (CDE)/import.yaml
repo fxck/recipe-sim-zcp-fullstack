@@ -14,7 +14,7 @@ services:
   - hostname: appdev
     type: nodejs@22
     zeropsSetup: dev
-    buildFromGit: https://github.com/fxck/recipe-zcp-fullstack
+    buildFromGit: https://github.com/fxck/recipe-sim-zcp-fullstack
     enableSubdomainAccess: true
     verticalAutoscaling:
       minRam: 0.5
@@ -24,7 +24,7 @@ services:
   - hostname: appstage
     type: nodejs@22
     zeropsSetup: prod
-    buildFromGit: https://github.com/fxck/recipe-zcp-fullstack
+    buildFromGit: https://github.com/fxck/recipe-sim-zcp-fullstack
     enableSubdomainAccess: true
     verticalAutoscaling:
       minRam: 0.5

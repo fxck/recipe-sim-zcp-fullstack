@@ -6,15 +6,15 @@ A full-stack task manager scaffolded by [zcp](https://zerops.io) — [SvelteKit]
 
 ⬇️ **Full recipe page and deploy with one-click**
 
-[![Deploy on Zerops](https://github.com/zeropsio/recipe-shared-assets/blob/main/deploy-button/light/deploy-button.svg)](https://app.zerops.io/recipes/detail?github=https://github.com/fxck/recipe-zcp-fullstack&yaml=small-production)
+[![Deploy on Zerops](https://github.com/zeropsio/recipe-shared-assets/blob/main/deploy-button/light/deploy-button.svg)](https://app.zerops.io/recipes/detail?github=https://github.com/fxck/recipe-sim-zcp-fullstack&yaml=small-production)
 
 This is what a **zcp-produced own-code project** looks like as a GitHub recipe: the app code and the `.zerops-recipe/` definition live in the same repo, so cloning it gives you both the app and every environment it knows how to run in. The first two environments are **control-plane** environments — an AI agent workspace and a remote CDE — followed by local dev and two production tiers.
 
-- **AI Agent** [[info]](/0%20%E2%80%94%20AI%20Agent) — [[deploy with one click]](https://app.zerops.io/recipes/detail?github=https://github.com/fxck/recipe-zcp-fullstack&yaml=ai-agent)
-- **Remote (CDE)** [[info]](/1%20%E2%80%94%20Remote%20(CDE)) — [[deploy with one click]](https://app.zerops.io/recipes/detail?github=https://github.com/fxck/recipe-zcp-fullstack&yaml=remote-cde)
-- **Local** [[info]](/2%20%E2%80%94%20Local) — [[deploy with one click]](https://app.zerops.io/recipes/detail?github=https://github.com/fxck/recipe-zcp-fullstack&yaml=local)
-- **Small Production** [[info]](/4%20%E2%80%94%20Small%20Production) — [[deploy with one click]](https://app.zerops.io/recipes/detail?github=https://github.com/fxck/recipe-zcp-fullstack&yaml=small-production)
-- **Highly-available Production** [[info]](/5%20%E2%80%94%20Highly-available%20Production) — [[deploy with one click]](https://app.zerops.io/recipes/detail?github=https://github.com/fxck/recipe-zcp-fullstack&yaml=highly-available-production)
+- **AI Agent** [[info]](/0%20%E2%80%94%20AI%20Agent) — [[deploy with one click]](https://app.zerops.io/recipes/detail?github=https://github.com/fxck/recipe-sim-zcp-fullstack&yaml=ai-agent)
+- **Remote (CDE)** [[info]](/1%20%E2%80%94%20Remote%20(CDE)) — [[deploy with one click]](https://app.zerops.io/recipes/detail?github=https://github.com/fxck/recipe-sim-zcp-fullstack&yaml=remote-cde)
+- **Local** [[info]](/2%20%E2%80%94%20Local) — [[deploy with one click]](https://app.zerops.io/recipes/detail?github=https://github.com/fxck/recipe-sim-zcp-fullstack&yaml=local)
+- **Small Production** [[info]](/4%20%E2%80%94%20Small%20Production) — [[deploy with one click]](https://app.zerops.io/recipes/detail?github=https://github.com/fxck/recipe-sim-zcp-fullstack&yaml=small-production)
+- **Highly-available Production** [[info]](/5%20%E2%80%94%20Highly-available%20Production) — [[deploy with one click]](https://app.zerops.io/recipes/detail?github=https://github.com/fxck/recipe-sim-zcp-fullstack&yaml=highly-available-production)
 
 ## Take-over guide
 
