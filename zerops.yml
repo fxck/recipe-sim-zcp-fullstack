@@ -1,0 +1,32 @@
+# App build & run descriptor. The .zerops-recipe import yamls reference these
+# setups via `zeropsSetup: dev` / `zeropsSetup: prod`.
+zerops:
+  - setup: dev
+    build:
+      base: nodejs@22
+      buildCommands:
+        - npm ci
+      deployFiles: ./
+    run:
+      base: nodejs@22
+      ports:
+        - port: 3000
+          httpSupport: true
+      start: npm run dev
+  - setup: prod
+    build:
+      base: nodejs@22
+      buildCommands:
+        - npm ci
+        - npm run build
+      deployFiles:
+        - build
+        - public
+        - package.json
+        - node_modules
+    run:
+      base: nodejs@22
+      ports:
+        - port: 3000
+          httpSupport: true
+      start: npm run start
